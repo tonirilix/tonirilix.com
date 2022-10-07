@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/tonirilix.com",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/tonirilix.com",
+        "outputPath": "dist/apps/tonirilix.com"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/tonirilix.com"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tonirilix.com:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tonirilix.com:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "tonirilix.com:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "tonirilix.com:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tonirilix.com"],
+      "options": {
+        "jestConfig": "apps/tonirilix.com/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tonirilix.com/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
