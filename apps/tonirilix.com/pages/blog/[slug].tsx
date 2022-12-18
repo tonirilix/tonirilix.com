@@ -22,7 +22,7 @@ const mdxElements = {
   }),
 };
 
-const POST_PATH = join(process.cwd(), 'content');
+const POST_PATH = join(process.cwd(), process.env.articleMarkdownPath);
 
 export function Slug({ frontMatter, html }: ArticleProps) {
   return (
