@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "markdown": "libs/markdown",
+    "shared-mdx-elements": "libs/shared/mdx-elements",
     "tonirilix.com": "apps/tonirilix.com",
     "tonirilix.com-e2e": "apps/tonirilix.com-e2e"
   }

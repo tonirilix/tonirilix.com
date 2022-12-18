@@ -3,8 +3,9 @@ import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
-import { getParsedFileContentBySlug, renderMarkdown } from '@common/markdown';
 import { MDXRemote } from 'next-mdx-remote';
+import { getParsedFileContentBySlug, renderMarkdown } from '@common/markdown';
+import { Youtube } from '@shared/mdx-elements';
 
 import styles from './[slug].module.scss';
 
@@ -15,6 +16,10 @@ export interface ArticleProps extends ParsedUrlQuery {
   html?: any;
 }
 
+const mdxElements = {
+  Youtube,
+};
+
 const POST_PATH = join(process.cwd(), 'content');
 
 export function Slug({ frontMatter, html }: ArticleProps) {
@@ -24,7 +29,7 @@ export function Slug({ frontMatter, html }: ArticleProps) {
         <h1>{frontMatter.title}</h1>
         <div>by {frontMatter.author.name}</div>
       </article>
-      <MDXRemote {...html} />
+      <MDXRemote {...html} components={mdxElements} />
     </div>
   );
 }
@@ -47,7 +52,7 @@ export const getStaticProps: GetStaticProps<ArticleProps> = async ({
     props: {
       slug: params.slug,
       frontMatter: frontMatter,
-      html: html,
+      html,
     },
   };
 };
