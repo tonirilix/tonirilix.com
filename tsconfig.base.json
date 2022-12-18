@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@common/markdown": ["libs/markdown/src/index.ts"],
-      "@shared/mdx-elements": ["libs/shared/mdx-elements/src/index.ts"]
+      "@shared/mdx-elements": ["libs/shared/mdx-elements/src/index.ts"],
+      "@shared/mdx-elements/*": ["libs/shared/mdx-elements/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

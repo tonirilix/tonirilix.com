@@ -4,8 +4,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote } from 'next-mdx-remote';
+import dynamic from 'next/dynamic';
 import { getParsedFileContentBySlug, renderMarkdown } from '@common/markdown';
-import { Youtube } from '@shared/mdx-elements';
 
 import styles from './[slug].module.scss';
 
@@ -17,7 +17,9 @@ export interface ArticleProps extends ParsedUrlQuery {
 }
 
 const mdxElements = {
-  Youtube,
+  Youtube: dynamic(async () => {
+    return await import('@shared/mdx-elements/youtube/youtube');
+  }),
 };
 
 const POST_PATH = join(process.cwd(), 'content');
