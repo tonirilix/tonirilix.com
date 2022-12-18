@@ -11,7 +11,9 @@
   "dependencies": {
     "@nrwl/next": "14.6.4",
     "core-js": "^3.6.5",
+    "gray-matter": "^4.0.3",
     "next": "12.2.5",
+    "next-mdx-remote": "^4.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
