@@ -1,4 +1,7 @@
+import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { join } from 'path';
+
 import { ParsedUrlQuery } from 'querystring';
 import styles from './[slug].module.scss';
 
@@ -6,6 +9,8 @@ import styles from './[slug].module.scss';
 export interface ArticleProps extends ParsedUrlQuery {
   slug: string;
 }
+
+const POST_PATH = join(process.cwd(), 'content');
 
 export function Slug(props: ArticleProps) {
   return (
@@ -28,20 +33,13 @@ export const getStaticProps: GetStaticProps<ArticleProps> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths<ArticleProps> = async () => {
+  const paths = readdirSync(POST_PATH)
+    .map((path) => path.replace(/\.mdx?$/, ''))
+    .map((slug) => ({ params: { slug } }));
+
   return {
     fallback: false,
-    paths: [
-      {
-        params: {
-          slug: 'page1',
-        },
-      },
-      {
-        params: {
-          slug: 'page2',
-        },
-      },
-    ],
+    paths,
   };
 };
 
