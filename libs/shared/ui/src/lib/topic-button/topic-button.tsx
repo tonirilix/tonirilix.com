@@ -1,13 +1,19 @@
 import styles from './topic-button.module.scss';
 
-/* eslint-disable-next-line */
-export interface TopicButtonProps {}
+export interface TopicButtonProps {
+  topicName: string;
+  onClick?: () => void;
+}
 
 export function TopicButton(props: TopicButtonProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to TopicButton!</h1>
-    </div>
+    <button
+      type="button"
+      onClick={props.onClick}
+      className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+    >
+      {props.topicName}
+    </button>
   );
 }
 

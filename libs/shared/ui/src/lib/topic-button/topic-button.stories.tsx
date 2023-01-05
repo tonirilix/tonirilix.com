@@ -4,6 +4,11 @@ import { TopicButton } from './topic-button';
 export default {
   component: TopicButton,
   title: 'TopicButton',
+  argTypes: {
+    onClick: {
+      action: 'onClick executed',
+    },
+  },
 } as ComponentMeta<typeof TopicButton>;
 
 const Template: ComponentStory<typeof TopicButton> = (args) => (
@@ -13,4 +18,6 @@ const Template: ComponentStory<typeof TopicButton> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  topicName: 'Some great topic',
+};
