@@ -1,4 +1,5 @@
 {
+  "name": "tonirilix.com",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tonirilix.com",
   "projectType": "application",
@@ -44,7 +45,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/tonirilix.com"],
+      "outputs": ["{workspaceRoot}/coverage/apps/tonirilix.com"],
       "options": {
         "jestConfig": "apps/tonirilix.com/jest.config.ts",
         "passWithNoTests": true
