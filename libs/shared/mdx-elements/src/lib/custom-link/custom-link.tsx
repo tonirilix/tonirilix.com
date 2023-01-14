@@ -8,11 +8,7 @@ export interface CustomLinkProps {
 }
 
 export function CustomLink({ as, href, ...props }: CustomLinkProps) {
-  return (
-    <Link as={as} href={href}>
-      <a {...props} />
-    </Link>
-  );
+  return <Link as={as} href={href} {...props} />;
 }
 
 export default CustomLink;
