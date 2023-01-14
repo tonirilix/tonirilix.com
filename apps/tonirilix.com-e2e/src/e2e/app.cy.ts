@@ -8,6 +8,18 @@ describe('tonirilix.com', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome tonirilix.com');
+    getGreeting().contains('Welcome to Next.js!');
+  });
+});
+
+describe('blog', () => {
+  beforeEach(() => cy.visit('/blog/dynamic-routing'));
+
+  it('should render the title of the article', () => {
+    cy.get('h1').should('contain', 'Dynamic Routing and Static Generation');
+  });
+
+  it('should properly render the embedded Youtube component', () => {
+    cy.get('iframe').should('be.visible');
   });
 });
