@@ -1,6 +1,6 @@
 import React from 'react';
 import { readdirSync } from 'fs';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote } from 'next-mdx-remote';
@@ -24,7 +24,10 @@ const mdxElements = {
 
 const POST_PATH = join(process.cwd(), process.env.articleMarkdownPath);
 
-export function Slug({ frontMatter, html }: ArticleProps) {
+export function Slug({
+  frontMatter,
+  html,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className="m-6">
       <article className="prose prose-lg">
@@ -36,11 +39,7 @@ export function Slug({ frontMatter, html }: ArticleProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps<ArticleProps> = async ({
-  params,
-}: {
-  params: ArticleProps;
-}) => {
+export const getStaticProps = async ({ params }: { params: ArticleProps }) => {
   // 1. parse the content of our markdown and separate it into front-matter and content
   const { frontMatter, content: markdownContent } = getParsedFileContentBySlug(
     params.slug,
