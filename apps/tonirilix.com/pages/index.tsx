@@ -16,12 +16,12 @@ const posts = [
 
 const Tag = ({ text }) => {
   return (
-    <Link
-      href={`/tags/${text}`}
+    <span
+      // href={`/tags/${text}`}
       className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
     >
       {text.split(' ').join('-')}
-    </Link>
+    </span>
   );
 };
 
@@ -34,18 +34,21 @@ export function Index() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>Tonirilix Blog</title>
+        <title>My journey through the code - tonirilix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
         <article className="prose lg:prose-lg mt-6">
-          <h1 className="text-6xl font-bold">
-            Welcome to my <span className="text-blue-600">Blog!</span>
-          </h1>
-          <p>
+          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            Hi, I'm <span className="text-blue-600">Jesus Montes</span>
+          </h2>
+          <p className="prose max-w-none text-gray-500 dark:text-gray-400">
             I write about my experiences in software development. Sometimes I do
-            experiments about things that I'm sure nobody else cares about.
+            experiments on things that nobody else cares about.
+          </p>
+          <p>
+            <Tag text="hello" /> <Tag text="world" />
           </p>
         </article>
       </main>
