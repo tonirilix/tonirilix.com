@@ -57,14 +57,14 @@ export function Index() {
         </article>
       </main>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      <footer className="flex h-24 w-full items-center justify-center text-sm">
         <a
           className="flex items-center justify-center gap-2"
           href="https://www.youtube.com/@webartisan"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Made with <Heart color="#AE2983" weight="fill" size={32} /> by
+          Made with <Heart color="#AE2983" weight="fill" size={20} /> by
           WEBartisan
         </a>
       </footer>
