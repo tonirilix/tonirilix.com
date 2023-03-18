@@ -38,18 +38,22 @@ export function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
+      <main className="flex w-full flex-1 flex-col items-center justify-center px-6">
         <article className="prose lg:prose-lg mt-6">
           <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Hi, I'm <span className="text-blue-600">Jesus Montes</span>
+            Hi, I'm <span className="text-sky-500">Jesus Montes</span>
           </h2>
           <p className="prose max-w-none text-gray-500 dark:text-gray-400">
-            I write about my experiences in software development. Sometimes I do
-            experiments on things that nobody else cares about.
+            I write about my experiences in software development.
+            <br />
+            Sometimes I do experiments on things that nobody else cares about.
           </p>
-          <p>
-            <Tag text="hello" /> <Tag text="world" />
-          </p>
+          <Link
+            href="/blog"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline"
+          >
+            Go to the blog
+          </Link>
         </article>
       </main>
 

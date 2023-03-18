@@ -8,7 +8,7 @@ export interface TopicsProps {}
 export function Topics(props: TopicsProps) {
   return (
     <div className="bg-gray-100 p-20">
-      <TopicButton topicName="Next.js" />
+      <TopicButton>Next.js</TopicButton>
     </div>
   );
 }
