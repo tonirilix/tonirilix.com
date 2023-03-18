@@ -44,7 +44,8 @@ export function Index() {
             Hi, I'm <span className="text-sky-500">Jesus Montes</span>
           </h2>
           <p className="prose max-w-none text-gray-500 dark:text-gray-400">
-            I write about my experiences in software development.
+            I'm a software engineer. I write about my experiences in software
+            development.
             <br />
             Sometimes I do experiments on things that nobody else cares about.
           </p>
