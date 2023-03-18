@@ -1,29 +1,6 @@
-import { TopicButton } from '@shared/ui';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Heart } from 'phosphor-react';
-
-const posts = [
-  {
-    slug: '123',
-    date: '123',
-    title: '123',
-    summary: 'uno dos tres',
-    tags: ['uno', 'dos', 'tres'],
-  },
-];
-
-const Tag = ({ text }) => {
-  return (
-    <span
-      // href={`/tags/${text}`}
-      className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-    >
-      {text.split(' ').join('-')}
-    </span>
-  );
-};
+import { Backpack, Heart } from 'phosphor-react';
 
 export function Index() {
   /*
@@ -51,9 +28,9 @@ export function Index() {
           </p>
           <Link
             href="/blog"
-            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
           >
-            Go to the blog
+            <Backpack size={24} className="inline-block" /> Go to the blog
           </Link>
         </article>
       </main>
