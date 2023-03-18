@@ -29,13 +29,17 @@ export function Slug({
   html,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div className="m-6">
-      <article className="prose prose-lg">
-        <h1>{frontMatter.title}</h1>
-        <div>by {frontMatter.author.name}</div>
-      </article>
-      <MDXRemote {...html} components={mdxElements} />
-    </div>
+    <article className="m-6">
+      <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-sky-500 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+        {frontMatter.title}
+      </h1>
+      <div className="prose prose-sm text-gray-500 dark:text-gray-400">
+        by {frontMatter.author.name}
+      </div>
+      <div className="prose prose-lg max-w-none text-gray-500 dark:text-gray-400 mt-3">
+        <MDXRemote {...html} components={mdxElements} />
+      </div>
+    </article>
   );
 }
 

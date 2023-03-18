@@ -48,7 +48,12 @@ export function Index() {
             <br />
             Sometimes I do experiments on things that nobody else cares about.
           </p>
-          <TopicButton>Go to the blog</TopicButton>
+          <Link
+            href="/blog"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline"
+          >
+            Go to the blog
+          </Link>
         </article>
       </main>
 
