@@ -5,6 +5,7 @@
     "markdown": "libs/markdown",
     "shared-mdx-elements": "libs/shared/mdx-elements",
     "shared-ui": "libs/shared/ui",
+    "shared-utils": "libs/shared/utils",
     "storybook-e2e-ui-e2e": "apps/storybook-e2e/ui-e2e",
     "tonirilix.com": "apps/tonirilix.com",
     "tonirilix.com-e2e": "apps/tonirilix.com-e2e"

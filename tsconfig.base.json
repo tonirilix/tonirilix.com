@@ -18,7 +18,8 @@
       "@common/markdown": ["libs/markdown/src/index.ts"],
       "@shared/mdx-elements": ["libs/shared/mdx-elements/src/index.ts"],
       "@shared/mdx-elements/*": ["libs/shared/mdx-elements/src/lib/*"],
-      "@shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@shared/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
