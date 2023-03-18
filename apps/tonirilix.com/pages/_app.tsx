@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import SectionContainer from '../components/SectionContainer';
 import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
@@ -8,9 +9,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to tonirilix.com!</title>
       </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
+      <SectionContainer>
+        <main className="app">
+          <Component {...pageProps} />
+        </main>
+      </SectionContainer>
     </>
   );
 }

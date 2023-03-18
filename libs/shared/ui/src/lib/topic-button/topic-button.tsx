@@ -1,18 +1,18 @@
 import styles from './topic-button.module.scss';
 
 export interface TopicButtonProps {
-  topicName: string;
+  children: string;
   onClick?: () => void;
 }
 
-export function TopicButton(props: TopicButtonProps) {
+export function TopicButton({ children, onClick }: TopicButtonProps) {
   return (
     <button
       type="button"
-      onClick={props.onClick}
+      onClick={onClick}
       className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
     >
-      {props.topicName}
+      {children}
     </button>
   );
 }
