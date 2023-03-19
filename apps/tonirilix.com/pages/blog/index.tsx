@@ -26,13 +26,7 @@ export function Blog({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5 grid gap-1">
-          <Link
-            href="/"
-            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
-          >
-            <House size={24} className="inline-block" /> Home
-          </Link>
+        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             My latest thoughts... some ok, some bad, some ugly.
           </p>
