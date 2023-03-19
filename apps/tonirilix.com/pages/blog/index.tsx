@@ -1,45 +1,48 @@
+import { getAllFilesFrontMatter } from '@common/markdown';
 import { formatDate } from '@shared/utils';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { House } from 'phosphor-react';
 
-import styles from './index.module.scss';
-
-const posts = [
-  {
-    slug: 'wip',
-    date: '2023-03-18T01:31:14.000Z',
-    title: 'WIP',
-    summary: 'This is just a WIP. Carry on.',
-    tags: ['tag wip'],
-  },
-];
 const MAX_DISPLAY = 5;
+
+export async function getStaticProps() {
+  const posts = getAllFilesFrontMatter('content');
+
+  return { props: { posts } };
+}
 
 /* eslint-disable-next-line */
 export interface BlogProps {}
 
-export function Blog(props: BlogProps) {
+export function Blog({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
-        <title>Latest articles</title>
+        <title>Latest articles - tonirilix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
-          </h1>
+        <div className="space-y-2 pt-6 pb-8 md:space-y-5 grid gap-1">
+          <Link
+            href="/"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
+          >
+            <House size={24} className="inline-block" /> Home
+          </Link>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             My latest thoughts... some ok, some bad, some ugly.
           </p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter;
+          {posts.slice(0, MAX_DISPLAY).map((post) => {
+            const { date, title, excerpt, tags } = post.frontMatter;
             return (
-              <li key={slug} className="py-12">
+              <li key={post.slug} className="py-12">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
@@ -53,7 +56,7 @@ export function Blog(props: BlogProps) {
                         <div>
                           <h2 className="text-2xl font-bold leading-8 tracking-tight">
                             <Link
-                              href={`/blog/${slug}`}
+                              href={`/blog/${post.slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
                               {title}
@@ -66,12 +69,12 @@ export function Blog(props: BlogProps) {
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
+                          {excerpt}
                         </div>
                       </div>
                       <div className="text-base font-medium leading-6">
                         <Link
-                          href={`/blog/${slug}`}
+                          href={`/blog/${post.slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read "${title}"`}
                         >
