@@ -1,23 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TopicButton } from './topic-button';
+import { ActionButton } from './action-button';
 
 export default {
-  component: TopicButton,
-  title: 'TopicButton',
+  component: ActionButton,
+  title: 'ActionButton',
   argTypes: {
     onClick: {
       action: 'onClick executed',
     },
   },
-} as ComponentMeta<typeof TopicButton>;
+} as ComponentMeta<typeof ActionButton>;
 
-const Template: ComponentStory<typeof TopicButton> = (args) => (
+const Template: ComponentStory<typeof ActionButton> = (args) => (
   <div className="bg-gray-100 p-20">
-    <TopicButton {...args} />
+    <ActionButton {...args} />
   </div>
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
-  topicName: 'Some great topic',
+  children: 'Some great topic',
 };

@@ -1,3 +1,4 @@
+import { ActionButton } from '@shared/ui';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Backpack, Heart } from 'phosphor-react';
@@ -26,12 +27,14 @@ export function Index() {
             <br />
             Sometimes I do experiments on things that nobody else cares about.
           </p>
-          <Link
+          <ActionButton
+            variant="link"
+            size="large"
             href="/blog"
-            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
+            startIcon={<Backpack size={24} className="inline-block" />}
           >
-            <Backpack size={24} className="inline-block" /> Go to the blog
-          </Link>
+            Go to the blog
+          </ActionButton>
         </article>
       </main>
 
