@@ -9,6 +9,7 @@ import { getParsedFileContentBySlug, renderMarkdown } from '@common/markdown';
 
 import Link from 'next/link';
 import { Backpack } from 'phosphor-react';
+import { ActionButton } from '@shared/ui';
 
 /* eslint-disable-next-line */
 export interface ArticleProps extends ParsedUrlQuery {
@@ -31,12 +32,13 @@ export function Slug({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <article className="pt-6">
-      <Link
+      <ActionButton
+        variant="link"
         href="/blog"
-        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
+        startIcon={<Backpack size={24} className="inline-block" />}
       >
-        <Backpack size={24} className="inline-block" /> Blog
-      </Link>
+        Blog
+      </ActionButton>
       <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-sky-500 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 mt-5">
         {frontMatter.title}
       </h1>

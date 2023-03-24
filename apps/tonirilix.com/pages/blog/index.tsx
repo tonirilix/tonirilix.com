@@ -1,4 +1,5 @@
 import { getAllFilesFrontMatter } from '@common/markdown';
+import { ActionButton } from '@shared/ui';
 import { formatDate } from '@shared/utils';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
@@ -22,17 +23,17 @@ export function Blog({
   return (
     <>
       <Head>
-        <title>Latest articles - tonirilix</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Latest articles by tonirilix</title>
       </Head>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5 grid gap-1">
-          <Link
+          <ActionButton
+            variant="link"
             href="/"
-            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded no-underline max-w-max flex gap-2"
+            startIcon={<House size={24} className="inline-block" />}
           >
-            <House size={24} className="inline-block" /> Home
-          </Link>
+            Home
+          </ActionButton>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             My latest thoughts... some ok, some bad, some ugly.
           </p>
