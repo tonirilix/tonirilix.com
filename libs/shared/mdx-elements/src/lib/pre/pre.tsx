@@ -1,9 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, ReactNode } from 'react';
 
-import type { ReactNode } from 'react';
-import styles from './pre.module.scss';
-
-/* eslint-disable-next-line */
 export interface PreProps {
   children: ReactNode;
 }

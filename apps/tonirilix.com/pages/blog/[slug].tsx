@@ -3,9 +3,9 @@ import { readdirSync } from 'fs';
 import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
-import { formatSlug, getFileBySlug } from '@common/markdown';
-
 import { Backpack } from 'phosphor-react';
+
+import { formatSlug, getFileBySlug } from '@common/markdown';
 import { ActionButton } from '@shared/ui';
 import { MDXRenderer } from '@shared/mdx-elements';
 
@@ -44,7 +44,7 @@ export function Slug({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { mdxSource, frontMatter } = post;
 
   return (
-    <article className="pt-6">
+    <article className="space-y-2 pt-6 pb-8 md:space-y-4 grid gap-1">
       <ActionButton
         variant="link"
         href="/blog"
@@ -52,7 +52,7 @@ export function Slug({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
       >
         Blog
       </ActionButton>
-      <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-sky-500 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 mt-5">
+      <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
         {frontMatter.title}
       </h1>
       <div className="prose prose-sm text-gray-500 dark:text-gray-400">

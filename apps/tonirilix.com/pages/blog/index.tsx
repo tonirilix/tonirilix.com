@@ -1,10 +1,11 @@
+import Head from 'next/head';
+import Link from 'next/link';
+import { InferGetStaticPropsType } from 'next';
+import { House } from 'phosphor-react';
+
 import { getAllFilesFrontMatter } from '@common/markdown';
 import { ActionButton } from '@shared/ui';
 import { formatDate } from '@shared/utils';
-import { InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import { House } from 'phosphor-react';
 
 const MAX_DISPLAY = 5;
 
@@ -13,9 +14,6 @@ export async function getStaticProps() {
 
   return { props: { posts } };
 }
-
-/* eslint-disable-next-line */
-export interface BlogProps {}
 
 export function Blog({
   posts,
@@ -35,7 +33,7 @@ export function Blog({
             Home
           </ActionButton>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            My latest thoughts... some ok, some bad, some ugly.
+            My latest thoughts... some are OK, some bad, and some pretty ugly.
           </p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
