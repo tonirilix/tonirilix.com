@@ -1,7 +1,7 @@
-import { ActionButton } from '@shared/ui';
 import Head from 'next/head';
-import Link from 'next/link';
 import { Backpack, Heart } from 'phosphor-react';
+
+import { ActionButton } from '@shared/ui';
 
 export function Index() {
   /*

@@ -1,10 +1,8 @@
-import styles from './mdxrenderer.module.css';
-
 import { useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import dynamic from 'next/dynamic';
+
 import { Pre, CustomLink } from '@shared/mdx-elements';
-import type { MDXComponents } from 'mdx/types';
 
 export interface MDXRendererProps {
   mdxSource: string;
