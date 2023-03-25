@@ -3,33 +3,46 @@ import { readdirSync } from 'fs';
 import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
-import { MDXRemote } from 'next-mdx-remote';
-import dynamic from 'next/dynamic';
-import { getParsedFileContentBySlug, renderMarkdown } from '@common/markdown';
+import { formatSlug, getFileBySlug } from '@common/markdown';
 
-import Link from 'next/link';
 import { Backpack } from 'phosphor-react';
 import { ActionButton } from '@shared/ui';
+import { MDXRenderer } from '@shared/mdx-elements';
 
-/* eslint-disable-next-line */
 export interface ArticleProps extends ParsedUrlQuery {
   slug: string;
-  frontMatter?: any;
-  html?: any;
 }
-
-const mdxElements = {
-  Youtube: dynamic(async () => {
-    return await import('@shared/mdx-elements/youtube/youtube');
-  }),
-};
 
 const POST_PATH = join(process.cwd(), process.env.articleMarkdownPath);
 
-export function Slug({
-  frontMatter,
-  html,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export const getStaticPaths: GetStaticPaths<ArticleProps> = async () => {
+  const paths = readdirSync(POST_PATH)
+    .map(formatSlug)
+    .map((slug) => ({ params: { slug } }));
+
+  return {
+    fallback: false,
+    paths,
+  };
+};
+
+export const getStaticProps = async ({ params }: { params: ArticleProps }) => {
+  const post = await getFileBySlug(
+    process.env.articleMarkdownPath,
+    params.slug
+  );
+
+  return {
+    props: {
+      slug: params.slug,
+      post,
+    },
+  };
+};
+
+export function Slug({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { mdxSource, frontMatter } = post;
+
   return (
     <article className="pt-6">
       <ActionButton
@@ -43,43 +56,13 @@ export function Slug({
         {frontMatter.title}
       </h1>
       <div className="prose prose-sm text-gray-500 dark:text-gray-400">
-        by {frontMatter.author.name}
+        by {frontMatter.author.name} - {frontMatter.readingTime.text}
       </div>
       <div className="prose prose-lg max-w-none text-gray-500 dark:text-gray-400 mt-3">
-        <MDXRemote {...html} components={mdxElements} />
+        <MDXRenderer mdxSource={mdxSource} frontMatter={frontMatter} />
       </div>
     </article>
   );
 }
-
-export const getStaticProps = async ({ params }: { params: ArticleProps }) => {
-  // 1. parse the content of our markdown and separate it into front-matter and content
-  const { frontMatter, content: markdownContent } = getParsedFileContentBySlug(
-    params.slug,
-    POST_PATH
-  );
-
-  // 2. convert markdown content => HTML
-  const html = await renderMarkdown(markdownContent);
-
-  return {
-    props: {
-      slug: params.slug,
-      frontMatter: frontMatter,
-      html,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths<ArticleProps> = async () => {
-  const paths = readdirSync(POST_PATH)
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    .map((slug) => ({ params: { slug } }));
-
-  return {
-    fallback: false,
-    paths,
-  };
-};
 
 export default Slug;
