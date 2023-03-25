@@ -41,7 +41,7 @@ export function Blog({
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { date, title, excerpt, tags } = post.frontMatter;
+            const { date, title, excerpt, tags } = post;
             return (
               <li key={post.slug} className="py-12">
                 <article>

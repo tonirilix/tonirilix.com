@@ -2,6 +2,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import SectionContainer from '../components/SectionContainer';
 import './styles.css';
+import './prism.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
